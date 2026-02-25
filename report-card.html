@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Website Report Card for Sydney Tradies | Tradie Web Help</title>
+<meta name="description" content="Find out exactly why customers aren't finding you online. Get your free personalised website report card — we'll tell you exactly what's costing you leads.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --orange: #FF6B00;
+    --orange-dim: rgba(255,107,0,0.12);
+    --black: #0e0e0e;
+    --dark: #161616;
+    --darker: #1c1c1c;
+    --mid: #2a2a2a;
+    --grey: #888;
+    --lgrey: #ccc;
+    --white: #fff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Barlow', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* ── TEXTURE OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 60px,
+      rgba(255,107,0,0.012) 60px,
+      rgba(255,107,0,0.012) 61px
+    );
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 18px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(14,14,14,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--mid);
+  }
+
+  .nav-brand {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 22px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--white);
+    text-decoration: none;
+  }
+  .nav-brand span { color: var(--orange); }
+
+  .nav-tag {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--grey);
+  }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 120px 40px 80px;
+    overflow: hidden;
+  }
+
+  .hero-bg-number {
+    position: absolute;
+    right: -40px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: clamp(300px, 40vw, 600px);
+    color: var(--orange);
+    opacity: 0.04;
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .hero-glow {
+    position: absolute;
+    top: -200px;
+    left: -200px;
+    width: 700px;
+    height: 700px;
+    background: radial-gradient(circle, rgba(255,107,0,0.07) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    position: relative;
+    z-index: 2;
+    max-width: 1100px;
+    margin: 0 auto;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 440px;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .hero-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 24px;
+  }
+
+  .eyebrow-line {
+    width: 40px;
+    height: 3px;
+    background: var(--orange);
+    flex-shrink: 0;
+  }
+
+  .eyebrow-text {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--orange);
+  }
+
+  .hero-headline {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: clamp(52px, 7vw, 88px);
+    line-height: 0.95;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+
+  .hero-headline .white { color: var(--white); }
+  .hero-headline .orange { color: var(--orange); }
+
+  .hero-sub {
+    font-size: 18px;
+    color: var(--grey);
+    line-height: 1.65;
+    max-width: 520px;
+    margin-bottom: 40px;
+  }
+
+  .hero-sub strong { color: var(--white); font-weight: 600; }
+
+  /* Proof badges */
+  .proof-badges {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--darker);
+    border: 1px solid var(--mid);
+    padding: 10px 16px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--lgrey);
+  }
+
+  .badge-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--orange);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ── FORM CARD ── */
+  .form-card {
+    position: relative;
+    background: var(--dark);
+    border: 1px solid var(--mid);
+    border-top: 3px solid var(--orange);
+    padding: 40px 36px;
+  }
+
+  .form-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, var(--orange), transparent);
+  }
+
+  .form-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 28px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--white);
+    margin-bottom: 6px;
+  }
+
+  .form-subtitle {
+    font-size: 14px;
+    color: var(--grey);
+    margin-bottom: 28px;
+    line-height: 1.5;
+  }
+
+  .form-group {
+    margin-bottom: 16px;
+  }
+
+  .form-group label {
+    display: block;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--grey);
+    margin-bottom: 7px;
+  }
+
+  .form-group input,
+  .form-group select {
+    width: 100%;
+    background: var(--black);
+    border: 1px solid var(--mid);
+    color: var(--white);
+    padding: 13px 16px;
+    font-family: 'Barlow', sans-serif;
+    font-size: 15px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    appearance: none;
+    border-radius: 0;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus {
+    border-color: var(--orange);
+    box-shadow: 0 0 0 3px rgba(255,107,0,0.08);
+  }
+
+  .form-group select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23888' stroke-width='2' fill='none'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    padding-right: 40px;
+    cursor: pointer;
+  }
+
+  .form-group select option { background: var(--dark); }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .submit-btn {
+    width: 100%;
+    background: var(--orange);
+    color: var(--black);
+    border: none;
+    padding: 18px 28px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 20px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: background 0.2s, transform 0.1s;
+    clip-path: polygon(0 0, 100% 0, calc(100% - 14px) 100%, 0 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .submit-btn:hover { background: #ff8533; transform: translateY(-1px); }
+  .submit-btn:active { transform: translateY(0); }
+
+  .form-privacy {
+    font-size: 12px;
+    color: #555;
+    margin-top: 12px;
+    text-align: center;
+    line-height: 1.5;
+  }
+
+  /* ── WHAT YOU GET SECTION ── */
+  .section {
+    position: relative;
+    z-index: 1;
+    padding: 100px 40px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: clamp(42px, 5vw, 64px);
+    line-height: 1.0;
+    text-transform: uppercase;
+    margin-bottom: 48px;
+  }
+
+  .section-title .white { color: var(--white); }
+  .section-title .orange { color: var(--orange); }
+
+  /* Report card preview */
+  .report-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-bottom: 60px;
+  }
+
+  .report-item {
+    background: var(--darker);
+    padding: 28px 24px;
+    border-bottom: 3px solid transparent;
+    transition: border-color 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .report-item::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--orange);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s;
+  }
+
+  .report-item:hover::after { transform: scaleX(1); }
+
+  .report-icon {
+    font-size: 28px;
+    margin-bottom: 14px;
+  }
+
+  .report-item-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 20px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+
+  .report-item-desc {
+    font-size: 14px;
+    color: var(--grey);
+    line-height: 1.55;
+  }
+
+  /* ── HOW IT WORKS ── */
+  .steps-divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--mid), transparent);
+    margin-bottom: 100px;
+  }
+
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    position: relative;
+  }
+
+  .steps::before {
+    content: '';
+    position: absolute;
+    top: 28px;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background: var(--mid);
+  }
+
+  .step {
+    text-align: center;
+    padding: 0 20px;
+    position: relative;
+  }
+
+  .step-num {
+    width: 56px;
+    height: 56px;
+    background: var(--orange);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 24px;
+    font-weight: 900;
+    color: var(--black);
+    margin: 0 auto 20px;
+    position: relative;
+    z-index: 1;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  }
+
+  .step-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 20px;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+
+  .step-desc {
+    font-size: 14px;
+    color: var(--grey);
+    line-height: 1.55;
+  }
+
+  /* ── SOCIAL PROOF ── */
+  .proof-section {
+    background: var(--dark);
+    border-top: 1px solid var(--mid);
+    border-bottom: 1px solid var(--mid);
+    padding: 80px 40px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .proof-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .testimonial {
+    position: relative;
+  }
+
+  .stars {
+    color: var(--orange);
+    font-size: 20px;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+  }
+
+  .testimonial-quote {
+    font-size: 22px;
+    color: var(--white);
+    font-style: italic;
+    line-height: 1.6;
+    border-left: 3px solid var(--orange);
+    padding-left: 24px;
+    margin-bottom: 20px;
+  }
+
+  .testimonial-author {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 18px;
+    font-weight: 900;
+    color: var(--orange);
+    letter-spacing: 1px;
+  }
+
+  .testimonial-role {
+    font-size: 14px;
+    color: var(--grey);
+    margin-top: 4px;
+  }
+
+  .proof-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .stat-box {
+    background: var(--black);
+    border: 1px solid var(--mid);
+    padding: 28px 20px;
+    text-align: center;
+  }
+
+  .stat-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 52px;
+    font-weight: 900;
+    color: var(--orange);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .stat-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--grey);
+  }
+
+  /* ── BOTTOM CTA ── */
+  .bottom-cta {
+    position: relative;
+    z-index: 1;
+    padding: 100px 40px;
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .bottom-cta-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: clamp(42px, 6vw, 72px);
+    text-transform: uppercase;
+    line-height: 1.0;
+    margin-bottom: 20px;
+  }
+
+  .bottom-cta p {
+    font-size: 18px;
+    color: var(--grey);
+    line-height: 1.6;
+    margin-bottom: 36px;
+  }
+
+  .cta-btn {
+    display: inline-block;
+    background: var(--orange);
+    color: var(--black);
+    padding: 20px 48px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 22px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    clip-path: polygon(0 0, 100% 0, calc(100% - 16px) 100%, 0 100%);
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .cta-btn:hover { background: #ff8533; transform: translateY(-2px); }
+
+  /* ── FOOTER ── */
+  footer {
+    position: relative;
+    z-index: 1;
+    border-top: 1px solid var(--mid);
+    padding: 32px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  footer .brand {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 18px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--white);
+  }
+
+  footer .brand span { color: var(--orange); }
+
+  footer p {
+    font-size: 13px;
+    color: #444;
+  }
+
+  /* ── SUCCESS STATE ── */
+  .success-state {
+    display: none;
+    text-align: center;
+    padding: 40px 20px;
+  }
+
+  .success-icon {
+    font-size: 56px;
+    margin-bottom: 16px;
+  }
+
+  .success-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 32px;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 10px;
+  }
+
+  .success-msg {
+    font-size: 15px;
+    color: var(--grey);
+    line-height: 1.6;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(28px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-left > * {
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards;
+  }
+
+  .hero-eyebrow { animation-delay: 0.1s; }
+  .hero-headline { animation-delay: 0.2s; }
+  .hero-sub { animation-delay: 0.3s; }
+  .proof-badges { animation-delay: 0.4s; }
+
+  .form-card {
+    opacity: 0;
+    animation: fadeUp 0.6s ease 0.3s forwards;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .hero-inner {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+
+    .hero-bg-number { display: none; }
+
+    .report-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .steps {
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+
+    .steps::before { display: none; }
+
+    .proof-inner {
+      grid-template-columns: 1fr;
+    }
+
+    nav { padding: 16px 20px; }
+    .hero { padding: 100px 20px 60px; }
+    .section { padding: 60px 20px; }
+    .proof-section { padding: 60px 20px; }
+    footer { padding: 24px 20px; flex-direction: column; gap: 12px; text-align: center; }
+  }
+
+  @media (max-width: 600px) {
+    .report-grid { grid-template-columns: 1fr; }
+    .steps { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .proof-stats { grid-template-columns: 1fr 1fr; }
+    .hero { padding: 90px 16px 50px; }
+    .section { padding: 50px 16px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="https://tradiewebhelp.com" class="nav-brand">Tradie<span>Web</span>Help</a>
+  <span class="nav-tag">Free Report Card</span>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-number">F</div>
+  <div class="hero-glow"></div>
+  <div class="hero-inner">
+
+    <!-- LEFT COPY -->
+    <div class="hero-left">
+      <div class="hero-eyebrow">
+        <div class="eyebrow-line"></div>
+        <span class="eyebrow-text">100% Free · No obligation</span>
+      </div>
+
+      <h1 class="hero-headline">
+        <span class="white">Find Out Why<br>Customers Aren't<br></span>
+        <span class="orange">Calling You.</span>
+      </h1>
+
+      <p class="hero-sub">
+        We'll review your entire online presence and send you a <strong>personalised report card</strong> — exactly what's broken, what's costing you leads, and how to fix it. Takes you 60 seconds to request.
+      </p>
+
+      <div class="proof-badges">
+        <div class="badge"><div class="badge-dot"></div>Delivered within 24hrs</div>
+        <div class="badge"><div class="badge-dot"></div>No sales pitch</div>
+        <div class="badge"><div class="badge-dot"></div>Sydney tradies only</div>
+      </div>
+    </div>
+
+    <!-- FORM CARD -->
+    <div class="form-card" id="formCard">
+      <div class="form-title">Get Your Free Report</div>
+      <p class="form-subtitle">Takes 60 seconds. We'll send your report within 24 hours.</p>
+
+      <form id="reportForm" action="https://formspree.io/f/xkovkvzo" method="POST">
+        <!-- Hidden field to tag these submissions -->
+        <input type="hidden" name="_subject" value="🔍 New Report Card Request">
+        <input type="hidden" name="source" value="Report Card Landing Page">
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fname">First Name</label>
+            <input type="text" id="fname" name="first_name" placeholder="Dave" required>
+          </div>
+          <div class="form-group">
+            <label for="flname">Last Name</label>
+            <input type="text" id="flname" name="last_name" placeholder="Smith" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="fphone">Mobile Number</label>
+          <input type="tel" id="fphone" name="phone" placeholder="0400 000 000" required>
+        </div>
+
+        <div class="form-group">
+          <label for="femail">Email Address</label>
+          <input type="email" id="femail" name="email" placeholder="dave@plumbing.com.au" required>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="ftrade">Your Trade</label>
+            <select id="ftrade" name="trade" required>
+              <option value="" disabled selected>Select...</option>
+              <option>Plumber</option>
+              <option>Electrician</option>
+              <option>Landscaper</option>
+              <option>Builder</option>
+              <option>Painter</option>
+              <option>Concreter</option>
+              <option>Carpenter</option>
+              <option>Tiler</option>
+              <option>HVAC</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="fsuburb">Your Suburb</label>
+            <input type="text" id="fsuburb" name="suburb" placeholder="e.g. Cronulla" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="fwebsite">Current Website (if any)</label>
+          <input type="text" id="fwebsite" name="website" placeholder="e.g. plumbingbydave.com.au">
+        </div>
+
+        <button type="submit" class="submit-btn">Send Me My Free Report →</button>
+        <p class="form-privacy">🔒 We never share your details. No spam, ever.</p>
+      </form>
+
+      <!-- SUCCESS STATE -->
+      <div class="success-state" id="successState">
+        <div class="success-icon">✅</div>
+        <div class="success-title">You're all set, legend!</div>
+        <p class="success-msg">We've got your details and we're on it.<br>Your personalised report card will land in your inbox within 24 hours.<br><br>Keep an eye on your phone too — we might give you a quick call.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- WHAT'S IN THE REPORT -->
+<div style="position:relative;z-index:1;">
+  <div style="width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--mid),transparent);"></div>
+</div>
+
+<div class="section">
+  <div class="section-label">
+    <div class="eyebrow-line"></div>
+    <span class="eyebrow-text">What's included</span>
+  </div>
+  <h2 class="section-title">
+    <span class="white">Your Report Covers<br></span>
+    <span class="orange">6 Key Areas</span>
+  </h2>
+
+  <div class="report-grid">
+    <div class="report-item">
+      <div class="report-icon">🔍</div>
+      <div class="report-item-title">Google Visibility</div>
+      <div class="report-item-desc">Are you showing up when someone searches your trade + suburb? We check your Google ranking and what your competitors are doing better.</div>
+    </div>
+    <div class="report-item">
+      <div class="report-icon">📱</div>
+      <div class="report-item-title">Mobile Experience</div>
+      <div class="report-item-desc">80% of searches happen on mobile. We test how your site looks and loads on a phone — and whether it's actually converting visitors to calls.</div>
+    </div>
+    <div class="report-item">
+      <div class="report-icon">⚡</div>
+      <div class="report-item-title">Website Speed</div>
+      <div class="report-item-desc">Slow sites kill leads. Google penalises them too. We test your load speed and flag if it's costing you customers before they even see your page.</div>
+    </div>
+    <div class="report-item">
+      <div class="report-icon">⭐</div>
+      <div class="report-item-title">Trust Signals</div>
+      <div class="report-item-desc">Reviews, credentials, photos of your work. We check what a new customer sees when they land on your page and whether it builds or destroys trust.</div>
+    </div>
+    <div class="report-item">
+      <div class="report-icon">📍</div>
+      <div class="report-item-title">Google Business Profile</div>
+      <div class="report-item-desc">The free listing that shows up above search results. Most tradies don't have it set up correctly. We check yours and tell you exactly what's missing.</div>
+    </div>
+    <div class="report-item">
+      <div class="report-icon">📞</div>
+      <div class="report-item-title">Lead Capture</div>
+      <div class="report-item-desc">Is it obvious how to contact you? Is your phone number clickable? We check whether your site makes it easy or hard for customers to reach you.</div>
+    </div>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <div class="steps-divider"></div>
+
+  <div class="section-label">
+    <div class="eyebrow-line"></div>
+    <span class="eyebrow-text">How it works</span>
+  </div>
+  <h2 class="section-title" style="margin-bottom:60px;">
+    <span class="white">Simple As.</span>
+  </h2>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-title">Fill In The Form</div>
+      <div class="step-desc">Takes 60 seconds. Just your name, trade, suburb, and current website if you have one.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-title">We Do The Research</div>
+      <div class="step-desc">Our team reviews your entire online presence — Google, website, mobile, speed, trust signals.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-title">Get Your Report</div>
+      <div class="step-desc">Within 24 hours we email you a personalised report card with your scores and what to fix.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-title">You Decide</div>
+      <div class="step-desc">No pressure, no sales pitch. If you want help fixing it, we're here. If not, keep the report.</div>
+    </div>
+  </div>
+</div>
+
+<!-- SOCIAL PROOF -->
+<div class="proof-section">
+  <div class="proof-inner">
+    <div class="testimonial">
+      <div class="stars">★★★★★</div>
+      <div class="testimonial-quote">"Got my site built in under a week and had my first Google enquiry the day after it went live. Best money I've spent on the business."</div>
+      <div class="testimonial-author">Jai D.</div>
+      <div class="testimonial-role">Primal Plumbing Solutions · Sutherland Shire</div>
+    </div>
+    <div class="proof-stats">
+      <div class="stat-box">
+        <div class="stat-num">7</div>
+        <div class="stat-label">Days to go live</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">$799</div>
+        <div class="stat-label">Starting price</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">24hr</div>
+        <div class="stat-label">Report turnaround</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Tradie focused</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BOTTOM CTA -->
+<div class="bottom-cta">
+  <h2 class="bottom-cta-title">
+    <span style="color:var(--white);">Stop Guessing.<br></span>
+    <span style="color:var(--orange);">Get The Report.</span>
+  </h2>
+  <p>Find out exactly what's costing you leads — for free, with no obligation.</p>
+  <a href="#formCard" class="cta-btn">Get My Free Report Card →</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="brand">Tradie<span>Web</span>Help</div>
+  <p>© 2025 Tradie Web Help · Demcorp Capital Pty Ltd · Sydney, Australia</p>
+</footer>
+
+<script>
+  // Form submission with success state
+  const form = document.getElementById('reportForm');
+  const success = document.getElementById('successState');
+
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const btn = form.querySelector('.submit-btn');
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (res.ok) {
+        form.style.display = 'none';
+        success.style.display = 'block';
+      } else {
+        btn.textContent = 'Something went wrong — try again';
+        btn.disabled = false;
+      }
+    } catch(err) {
+      btn.textContent = 'Something went wrong — try again';
+      btn.disabled = false;
+    }
+  });
+
+  // Smooth scroll for CTA button
+  document.querySelectorAll('a[href="#formCard"]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      document.getElementById('formCard').scrollIntoView({ behavior: 'smooth', block: 'center' });
+      setTimeout(() => document.getElementById('fname').focus(), 600);
+    });
+  });
+</script>
+
+</body>
+</html>

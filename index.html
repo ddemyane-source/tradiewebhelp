@@ -151,6 +151,36 @@ footer p{color:var(--grey);font-size:0.85rem;}
   .form-row{grid-template-columns:1fr;}
   .stats-strip{gap:2rem;}
 }
+
+/* BLOG */
+#blog{background:var(--black);}
+.blog-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.5rem;margin-top:3rem;}
+.blog-card{background:var(--dark);border:1px solid var(--mid);transition:border-color 0.3s,transform 0.3s;cursor:pointer;display:flex;flex-direction:column;}
+.blog-card:hover{border-color:var(--orange);transform:translateY(-4px);}
+.blog-card-top{background:var(--orange);padding:1.5rem;position:relative;overflow:hidden;min-height:80px;}
+.blog-card-top::after{content:'';position:absolute;bottom:-20px;right:-20px;width:120px;height:120px;background:rgba(0,0,0,0.1);border-radius:50%;}
+.blog-card-num{font-family:'Black Ops One',cursive;font-size:3.5rem;color:rgba(0,0,0,0.15);line-height:1;position:absolute;top:10px;right:16px;}
+.blog-card-tag{font-family:'Barlow Condensed',sans-serif;font-size:0.75rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--black);opacity:0.7;}
+.blog-card-body{padding:1.75rem;flex:1;display:flex;flex-direction:column;}
+.blog-card-title{font-family:'Barlow Condensed',sans-serif;font-size:1.35rem;font-weight:900;text-transform:uppercase;line-height:1.2;color:var(--white);margin-bottom:0.75rem;}
+.blog-card-excerpt{font-size:0.9rem;color:var(--grey);line-height:1.65;flex:1;margin-bottom:1.25rem;}
+.blog-card-read{font-family:'Barlow Condensed',sans-serif;font-size:0.85rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--orange);display:inline-flex;align-items:center;gap:0.5rem;}
+.blog-card:hover .blog-card-read{text-decoration:underline;}
+.blog-modal{display:none;position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,0.92);overflow-y:auto;padding:2rem 1rem;}
+.blog-modal.active{display:flex;justify-content:center;align-items:flex-start;}
+.blog-modal-inner{background:var(--dark);border:1px solid var(--mid);border-top:3px solid var(--orange);max-width:760px;width:100%;padding:3rem;position:relative;margin:auto;}
+.blog-modal-close{position:absolute;top:1rem;right:1.25rem;background:none;border:none;color:var(--grey);font-size:1.75rem;cursor:pointer;line-height:1;transition:color 0.2s;}
+.blog-modal-close:hover{color:var(--orange);}
+.blog-modal-tag{font-family:'Barlow Condensed',sans-serif;font-size:0.75rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--orange);margin-bottom:1rem;display:flex;align-items:center;gap:0.75rem;}
+.blog-modal-tag::before{content:'';display:block;width:30px;height:2px;background:var(--orange);}
+.blog-modal-title{font-family:'Black Ops One',cursive;font-size:clamp(1.5rem,4vw,2.2rem);line-height:1.1;color:var(--white);margin-bottom:2rem;}
+.blog-modal-body p{font-size:1rem;color:#bbb;line-height:1.8;margin-bottom:1.25rem;}
+.blog-modal-body h3{font-family:'Barlow Condensed',sans-serif;font-size:1.15rem;font-weight:900;text-transform:uppercase;color:var(--white);margin:1.75rem 0 0.75rem;letter-spacing:1px;}
+.blog-modal-body ul{margin:0 0 1.25rem 1rem;}
+.blog-modal-body ul li{font-size:0.95rem;color:#bbb;line-height:1.8;list-style:none;padding-left:1.25rem;position:relative;margin-bottom:0.25rem;}
+.blog-modal-body ul li::before{content:'→';position:absolute;left:0;color:var(--orange);}
+.blog-modal-cta{margin-top:2.5rem;padding-top:2rem;border-top:1px solid var(--mid);text-align:center;}
+.blog-modal-cta p{color:var(--grey);margin-bottom:1rem;font-size:0.95rem;}
 </style>
 </head>
 <body>
@@ -163,6 +193,7 @@ footer p{color:var(--grey);font-size:0.85rem;}
     <a href="#portfolio">Our Work</a>
     <a href="#why-us">Why Us</a>
     <a href="#pricing">Pricing</a>
+    <a href="#blog">Blog</a>
     <a href="#contact" class="nav-cta">Get Started</a>
   </div>
 </nav>
@@ -416,6 +447,163 @@ footer p{color:var(--grey);font-size:0.85rem;}
     </div>
   </div>
 </section>
+
+
+<!-- BLOG -->
+<section id="blog">
+  <div class="section-label">Our Blog</div>
+  <h2 class="section-title">Tradie Tips &amp; Advice</h2>
+  <p style="color:var(--grey);max-width:520px;line-height:1.6;margin-bottom:0;">Straight-talking advice for tradies who want more work online.</p>
+
+  <div class="blog-grid">
+
+    <!-- POST 1 -->
+    <a class="blog-card" href="/why-tradies-need-a-website" style="text-decoration:none;">
+      <div class="blog-card-top">
+        <span class="blog-card-num">01</span>
+        <div class="blog-card-tag">Local SEO · Sutherland Shire</div>
+      </div>
+      <div class="blog-card-body">
+        <div class="blog-card-title">Why Every Tradie in the Sutherland Shire Needs a Website in 2025</div>
+        <div class="blog-card-excerpt">Your mates are finding work online. Are you? If you don't have a website, your next customer is already calling your competitor instead.</div>
+        <span class="blog-card-read">Read Article →</span>
+      </div>
+    </a>
+
+    <!-- POST 2 -->
+    <a class="blog-card" href="/professional-website-difference" style="text-decoration:none;">
+      <div class="blog-card-top">
+        <span class="blog-card-num">02</span>
+        <div class="blog-card-tag">Web Design · Results</div>
+      </div>
+      <div class="blog-card-body">
+        <div class="blog-card-title">The Difference a Professional Website Makes for Sydney Tradies</div>
+        <div class="blog-card-excerpt">There's a big gap between having a website and having one that actually works. Most tradies fall into the wrong category — here's how to fix that.</div>
+        <span class="blog-card-read">Read Article →</span>
+      </div>
+    </a>
+
+    <!-- POST 3 -->
+    <a class="blog-card" href="/5-signs-website-costing-you-jobs" style="text-decoration:none;">
+      <div class="blog-card-top">
+        <span class="blog-card-num">03</span>
+        <div class="blog-card-tag">Website Audit · Tips</div>
+      </div>
+      <div class="blog-card-body">
+        <div class="blog-card-title">5 Signs Your Tradie Website is Costing You Jobs</div>
+        <div class="blog-card-excerpt">Having a website isn't enough if it's working against you. Here are 5 warning signs — and exactly what to do about each one.</div>
+        <span class="blog-card-read">Read Article →</span>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<!-- BLOG MODAL -->
+<div class="blog-modal" id="blogModal">
+  <div class="blog-modal-inner">
+    <button class="blog-modal-close" onclick="closeBlog()">&#215;</button>
+    <div class="blog-modal-tag" id="modalTag"></div>
+    <div class="blog-modal-title" id="modalTitle"></div>
+    <div class="blog-modal-body" id="modalBody"></div>
+    <div class="blog-modal-cta">
+      <p>Want more calls from Google? We build websites for tradies across the Sutherland Shire.</p>
+      <a href="#contact" class="btn-primary" onclick="closeBlog()">&#128296; Get Your Free Quote</a>
+    </div>
+  </div>
+</div>
+
+<script>
+const blogs = [
+  {
+    tag: "Local SEO · Sutherland Shire",
+    title: "Why Every Plumber, Electrician and Tradie in the Sutherland Shire Needs a Website in 2025",
+    body: `
+      <p>If you're a tradie working in the Sutherland Shire — whether you're a plumber in Cronulla, an electrician in Miranda, or a landscaper in Engadine — chances are your next customer is already searching for you online. The problem is, if you don't have a website, they're finding your competitor instead.</p>
+      <p>Word of mouth has always been the backbone of trade work, and it always will be. But the way word of mouth works has changed. These days, when someone gets a recommendation for a good tradie, the first thing they do is Google them. If nothing comes up, or worse, if there's a dodgy-looking page that hasn't been touched in five years, that lead is gone.</p>
+      <h3>What Customers Are Actually Doing Before They Call</h3>
+      <p>Before most people pick up the phone to book a tradie, they'll do at least one of these things:</p>
+      <ul>
+        <li>Search your business name on Google</li>
+        <li>Check if you have a website</li>
+        <li>Look for reviews or photos of your work</li>
+        <li>Compare you against someone else who came up in search results</li>
+      </ul>
+      <p>If you're not showing up, you're not even in the running. It's that simple.</p>
+      <h3>A Website Works While You're on the Tools</h3>
+      <p>The biggest advantage of having a professional website is that it's always on. While you're under a sink in Caringbah or wiring up a switchboard in Gymea, your website is out there answering questions, showing off your work, and collecting enquiries from people ready to book.</p>
+      <p>A good tradie website does a few things really well. It tells people exactly what you do and where you work. It shows photos of real jobs you've completed. It makes it dead easy to call you or send an enquiry. And it gives people enough confidence in you that they're ready to pick up the phone.</p>
+      <h3>The Sutherland Shire is a Competitive Market</h3>
+      <p>There are thousands of tradies operating across the Shire. The ones who are consistently busy aren't necessarily the best at their trade — they're often just the easiest to find and the easiest to trust online. A clean, professional website is one of the simplest ways to stand out from the bloke down the road who's still relying on a Facebook page he set up in 2018.</p>
+      <h3>You Don't Need Anything Complicated</h3>
+      <p>A lot of tradies put off getting a website because they think it has to be complicated or expensive. It doesn't. A simple one-page site with your services, your area, your photos, and a way to contact you is all you need to start getting found online and converting visitors into paying customers.</p>
+      <p>At Tradie Web Help, we build straightforward websites specifically for tradies in the Sutherland Shire. No jargon, no long waits, no overcharging. Just a professional online presence that gets you more calls.</p>
+    `
+  },
+  {
+    tag: "Web Design · Results",
+    title: "The Difference a Professional Website Makes for Tradies in Sydney's Sutherland Shire",
+    body: `
+      <p>Most tradies in the Sutherland Shire fall into one of three categories. Some have no website at all. Some have an old website that they set up years ago and haven't touched since. And a small number have a clean, modern site that's actively bringing in work. That last group tends to stay busy.</p>
+      <h3>What a Bad Website is Actually Costing You</h3>
+      <p>Think about the last time you searched for a service on your phone. If you clicked on a business and the website looked outdated, took forever to load, or was hard to read on your screen — you probably hit the back button and tried the next result. Your potential customers are doing exactly the same thing.</p>
+      <p>A bad website doesn't just fail to help you. It actively works against you. It signals to the customer that you might be unreliable, out of date, or not serious about your business. None of that is probably true — but that's the impression it creates.</p>
+      <h3>What a Professional Website Actually Does</h3>
+      <p>A properly built tradie website isn't about fancy design or impressive technology. It's about trust and convenience. When a potential customer lands on your site, they should immediately know what you do, where you work, and how to get in touch. Everything else is secondary.</p>
+      <p>The sites that convert visitors into enquiries have a few things in common. They load fast on mobile. They have a clear phone number at the top of the page. They show real photos of completed work. They have a simple contact form. And they cover the suburbs you actually service so Google knows to show you when someone searches in your area.</p>
+      <h3>A Real Example From the Sutherland Shire</h3>
+      <p>We recently rebuilt the website for a local plumbing business in the Shire. Their old site was barely functional on mobile, had no photos, and hadn't been updated in years. Within weeks of their new site going live, they were receiving more online enquiries than they ever had before — from customers who found them on Google without any paid advertising.</p>
+      <h3>The Investment vs The Return</h3>
+      <p>A new website from Tradie Web Help costs less than a single day's labour for most tradies, and it keeps working for you 24 hours a day, seven days a week. If it brings in even one new job a month that you wouldn't have otherwise had, it's already paid for itself many times over.</p>
+      <p>For tradies in the Sutherland Shire looking for a no-fuss, professional website that actually gets results — that's exactly what we do.</p>
+    `
+  },
+  {
+    tag: "Website Audit · Tips",
+    title: "5 Signs Your Tradie Website is Costing You Jobs (And What to Do About It)",
+    body: `
+      <p>A lot of tradies in the Sutherland Shire have a website — but that doesn't mean it's helping their business. A poorly built or outdated site can actually turn customers away before they even consider calling you. Here are five signs your current website might be costing you work.</p>
+      <h3>1. It Doesn't Work Properly on Mobile</h3>
+      <p>More than 70% of people searching for local services are doing it on their phone. If your website is hard to read, slow to load, or has buttons that are difficult to tap on a mobile screen, most visitors will leave within a few seconds and call someone else. Pull up your site on your phone right now. If anything looks off, that's a problem worth fixing.</p>
+      <h3>2. Your Phone Number Isn't Front and Centre</h3>
+      <p>The entire goal of a tradie website is to get people to call you or send an enquiry. If someone has to scroll around to find your number, they probably won't bother. Your phone number should be visible at the very top of the page, ideally as a clickable link so mobile users can call you with one tap.</p>
+      <h3>3. There Are No Photos of Your Work</h3>
+      <p>Customers want to see what they're getting before they commit. A website with no photos of real jobs looks unfinished and untrustworthy. You don't need professional photography — clear photos taken on your phone of completed jobs are more than enough to give customers confidence in your work.</p>
+      <h3>4. It Hasn't Been Updated in Years</h3>
+      <p>Outdated websites are easy to spot. Old copyright dates in the footer, broken links, information about services you no longer offer, or a design that looks like it was built a decade ago. All of these signal to customers — and to Google — that your business might not be active or reliable.</p>
+      <h3>5. It Doesn't Mention the Suburbs You Service</h3>
+      <p>If your website just says "Sydney" without mentioning the specific areas you work in, Google doesn't know to show you when someone in Cronulla or Caringbah or Engadine searches for your trade. Adding your actual service areas to your website is one of the simplest and most effective SEO improvements you can make.</p>
+      <h3>What to Do About It</h3>
+      <p>If any of these sound familiar, the good news is that none of them are difficult to fix. A modern, mobile-friendly website with your contact details, work photos, and service areas clearly listed is all most tradies need to start seeing better results online.</p>
+      <p>At Tradie Web Help, we specialise in building exactly that — simple, effective websites for tradies across the Sutherland Shire. No overcomplicated tech, no jargon, just a site that works.</p>
+    `
+  }
+];
+
+function openBlog(index) {
+  const blog = blogs[index];
+  document.getElementById('modalTag').textContent = blog.tag;
+  document.getElementById('modalTitle').textContent = blog.title;
+  document.getElementById('modalBody').innerHTML = blog.body;
+  document.getElementById('blogModal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeBlog() {
+  document.getElementById('blogModal').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+// Close on backdrop click
+document.getElementById('blogModal').addEventListener('click', function(e) {
+  if (e.target === this) closeBlog();
+});
+
+// Close on escape key
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeBlog();
+});
+</script>
 
 <!-- FOOTER -->
 <footer>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Barlow:wght@400;500;600;700;900&family=Barlow+Condensed:wght@700;900&display=swap" rel="stylesheet">
+<style>
+:root{--orange:#FF6B00;--yellow:#FFD000;--black:#0D0D0D;--dark:#1A1A1A;--mid:#2A2A2A;--grey:#888;--white:#F5F0E8;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Barlow',sans-serif;background:var(--black);color:var(--white);overflow-x:hidden;}
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1rem 2.5rem;background:rgba(13,13,13,0.95);backdrop-filter:blur(8px);border-bottom:2px solid var(--orange);}
+.nav-logo{font-family:'Black Ops One',cursive;font-size:1.4rem;color:var(--orange);letter-spacing:1px;text-decoration:none;}
+.nav-logo span{color:var(--yellow);}
+.nav-back{display:inline-flex;align-items:center;gap:0.5rem;color:var(--white);text-decoration:none;font-family:'Barlow Condensed',sans-serif;font-size:0.85rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;transition:color 0.2s;}
+.nav-back:hover{color:var(--orange);}
+.nav-back::before{content:'←';}
+/* ARTICLE HERO */
+.article-hero{padding:9rem 2.5rem 4rem;position:relative;overflow:hidden;border-bottom:1px solid var(--mid);}
+.article-hero::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(-45deg,transparent,transparent 40px,rgba(255,107,0,0.025) 40px,rgba(255,107,0,0.025) 80px);}
+.article-hero-inner{position:relative;z-index:2;max-width:800px;margin:0 auto;}
+.article-tag{display:inline-flex;align-items:center;gap:0.75rem;font-family:'Barlow Condensed',sans-serif;font-size:0.8rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--orange);margin-bottom:1.5rem;}
+.article-tag::before{content:'';display:block;width:30px;height:2px;background:var(--orange);}
+.article-hero h1{font-family:'Black Ops One',cursive;font-size:clamp(2rem,5vw,3.2rem);line-height:1.05;margin-bottom:1.5rem;}
+.article-meta{font-size:0.9rem;color:var(--grey);display:flex;gap:1.5rem;flex-wrap:wrap;}
+.article-meta span{display:flex;align-items:center;gap:0.4rem;}
+/* ARTICLE BODY */
+.article-body{max-width:800px;margin:0 auto;padding:4rem 2.5rem;}
+.article-body p{font-size:1.05rem;line-height:1.85;color:#bbb;margin-bottom:1.5rem;}
+.article-body h2{font-family:'Barlow Condensed',sans-serif;font-size:1.5rem;font-weight:900;text-transform:uppercase;letter-spacing:1px;color:var(--white);margin:2.5rem 0 1rem;padding-left:1rem;border-left:3px solid var(--orange);}
+.article-body ul{margin:0 0 1.5rem 0;list-style:none;}
+.article-body ul li{font-size:1rem;color:#bbb;line-height:1.8;padding:0.4rem 0 0.4rem 1.75rem;position:relative;}
+.article-body ul li::before{content:'→';position:absolute;left:0;color:var(--orange);font-weight:700;}
+.article-body strong{color:var(--white);font-weight:700;}
+/* CTA BOX */
+.article-cta{background:var(--orange);padding:3rem 2.5rem;margin:4rem 0 0;text-align:center;}
+.article-cta-inner{max-width:600px;margin:0 auto;}
+.article-cta h3{font-family:'Black Ops One',cursive;font-size:clamp(1.5rem,3vw,2rem);color:var(--black);margin-bottom:1rem;line-height:1.1;}
+.article-cta p{font-size:1rem;color:rgba(0,0,0,0.75);margin-bottom:2rem;line-height:1.6;}
+.btn-dark{display:inline-flex;align-items:center;gap:0.5rem;background:var(--black);color:var(--orange);font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;font-weight:900;letter-spacing:1px;text-transform:uppercase;padding:1rem 2rem;text-decoration:none;clip-path:polygon(12px 0%,100% 0%,calc(100% - 12px) 100%,0% 100%);transition:background 0.2s;}
+.btn-dark:hover{background:#1a1a1a;}
+/* RELATED */
+.related{max-width:800px;margin:0 auto;padding:3rem 2.5rem 5rem;}
+.related-title{font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--orange);margin-bottom:1.5rem;display:flex;align-items:center;gap:0.75rem;}
+.related-title::after{content:'';flex:1;height:1px;background:var(--mid);}
+.related-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.related-card{background:var(--dark);border:1px solid var(--mid);padding:1.5rem;text-decoration:none;transition:border-color 0.2s;}
+.related-card:hover{border-color:var(--orange);}
+.related-card-tag{font-family:'Barlow Condensed',sans-serif;font-size:0.7rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--orange);margin-bottom:0.5rem;}
+.related-card-title{font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:900;text-transform:uppercase;color:var(--white);line-height:1.3;}
+/* FOOTER */
+footer{background:var(--black);border-top:1px solid var(--mid);padding:2rem 2.5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
+footer p{color:var(--grey);font-size:0.85rem;}
+.footer-logo{font-family:'Black Ops One',cursive;font-size:1.2rem;color:var(--orange);}
+.footer-logo span{color:var(--yellow);}
+@media(max-width:700px){
+  nav{padding:1rem;}
+  .article-hero{padding:7rem 1.25rem 3rem;}
+  .article-body{padding:2.5rem 1.25rem;}
+  .related{padding:2rem 1.25rem 4rem;}
+  .related-grid{grid-template-columns:1fr;}
+  .article-cta{padding:2.5rem 1.25rem;}
+  footer{padding:1.5rem 1.25rem;flex-direction:column;text-align:center;}
+}
+</style>
+<title>Why Every Tradie in the Sutherland Shire Needs a Website in 2025 | Tradie Web Help</title>
+<meta name="description" content="If you're a tradie in the Sutherland Shire without a website, your next customer is already calling your competitor. Here's why you need to get online now.">
+<meta property="og:title" content="Why Every Tradie in the Sutherland Shire Needs a Website in 2025 | Tradie Web Help">
+<meta property="og:description" content="If you're a tradie in the Sutherland Shire without a website, your next customer is already calling your competitor. Here's why you need to get online now.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://tradiewebhelp.com/why-tradies-need-a-website">
+<link rel="canonical" href="https://tradiewebhelp.com/why-tradies-need-a-website">
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">Tradie<span>Web</span>Help</a>
+  <a href="/index.html#blog" class="nav-back"> Back to Blog</a>
+</nav>
+
+<header class="article-hero">
+  <div class="article-hero-inner">
+    <div class="article-tag">Local SEO · Sutherland Shire</div>
+    <h1>Why Every Plumber, Electrician and Tradie in the Sutherland Shire Needs a Website in 2025</h1>
+    <div class="article-meta">
+      <span>📅 February 2025</span>
+      <span>⏱ 4 min read</span>
+      <span>✍️ Tradie Web Help</span>
+    </div>
+  </div>
+</header>
+
+<article class="article-body">
+
+<p>If you're a tradie working in the Sutherland Shire — whether you're a plumber in Cronulla, an electrician in Miranda, or a landscaper in Engadine — chances are your next customer is already searching for you online. The problem is, if you don't have a website, they're finding your competitor instead.</p>
+<p>Word of mouth has always been the backbone of trade work, and it always will be. But the way word of mouth works has changed. These days, when someone gets a recommendation for a good tradie, the first thing they do is Google them. If nothing comes up, or worse, if there's a dodgy-looking page that hasn't been touched in five years, that lead is gone.</p>
+<h2>What Customers Are Actually Doing Before They Call</h2>
+<p>Before most people pick up the phone to book a tradie, they'll do at least one of these things:</p>
+<ul>
+  <li>Search your business name on Google</li>
+  <li>Check if you have a website</li>
+  <li>Look for reviews or photos of your work</li>
+  <li>Compare you against someone else who came up in search results</li>
+</ul>
+<p>If you're not showing up, you're not even in the running. It's that simple.</p>
+<h2>A Website Works While You're on the Tools</h2>
+<p>The biggest advantage of having a professional website is that it's always on. While you're under a sink in Caringbah or wiring up a switchboard in Gymea, your website is out there answering questions, showing off your work, and collecting enquiries from people ready to book.</p>
+<p>A good tradie website does a few things really well. It tells people exactly what you do and where you work. It shows photos of real jobs you've completed. It makes it dead easy to call you or send an enquiry. And it gives people enough confidence in you that they're ready to pick up the phone.</p>
+<h2>The Sutherland Shire is a Competitive Market</h2>
+<p>There are thousands of tradies operating across the Shire. The ones who are consistently busy aren't necessarily the best at their trade — they're often just the easiest to find and the easiest to trust online. A clean, professional website is one of the simplest ways to stand out from the bloke down the road who's still relying on a Facebook page he set up in 2018.</p>
+<h2>You Don't Need Anything Complicated</h2>
+<p>A lot of tradies put off getting a website because they think it has to be complicated or expensive. It doesn't. A simple one-page site with your services, your area, your photos, and a way to contact you is all you need to start getting found online and converting visitors into paying customers.</p>
+<p>At Tradie Web Help, we build straightforward websites specifically for tradies in the Sutherland Shire. No jargon, no long waits, no overcharging. Just a professional online presence that gets you more calls.</p>
+
+</article>
+
+<div class="article-cta">
+  <div class="article-cta-inner">
+    <h3>Ready to Get Found Online?</h3>
+    <p>We build professional websites for tradies across the Sutherland Shire — live in 7 days, from $799. No lock-in contracts.</p>
+    <a href="/#contact" class="btn-dark">🔧 Get Your Free Quote</a>
+  </div>
+</div>
+
+<div class="related">
+  <div class="related-title">More Articles</div>
+  <div class="related-grid"><a href="professional-website-difference" class="related-card">
+          <div class="related-card-tag">Web Design</div>
+          <div class="related-card-title">The Difference a Professional Website Makes</div>
+        </a><a href="5-signs-website-costing-you-jobs" class="related-card">
+          <div class="related-card-tag">Website Audit</div>
+          <div class="related-card-title">5 Signs Your Website is Costing You Jobs</div>
+        </a></div>
+</div>
+
+<footer>
+  <div class="footer-logo">Tradie<span>Web</span>Help</div>
+  <p>© 2025 Tradie Web Help · Demcorp Capital Pty Ltd</p>
+  <p>Built for tradies, by tradies.</p>
+</footer>
+
+</body>
+</html>

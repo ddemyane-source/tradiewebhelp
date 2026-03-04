@@ -1,0 +1,1219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Get Your Tradie Website — Live in 7 Days | TradieWebHelp</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Barlow:wght@400;500;600;700;900&family=Barlow+Condensed:wght@700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --orange: #FF6B00;
+    --yellow: #FFD000;
+    --black:  #0D0D0D;
+    --dark:   #1A1A1A;
+    --mid:    #2A2A2A;
+    --grey:   #888888;
+    --white:  #F5F0E8;
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Barlow', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── DIAGONAL TEXTURE ── */
+  .texture::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 40px,
+      rgba(255,107,0,0.02) 40px,
+      rgba(255,107,0,0.02) 41px
+    );
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+
+  @media (max-width: 768px) {
+    .container { padding: 0 20px; }
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(13,13,13,0.95);
+    border-bottom: 2px solid var(--orange);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .logo {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 26px;
+    text-decoration: none;
+    letter-spacing: 1px;
+  }
+  .logo .t { color: var(--orange); }
+  .logo .w { color: var(--yellow); }
+  .logo .h { color: var(--orange); }
+
+  .nav-phone {
+    font-family: 'Barlow', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--white);
+    text-decoration: none;
+    letter-spacing: 0.5px;
+  }
+  .nav-phone:hover { color: var(--orange); }
+
+  @media (max-width: 768px) {
+    .nav-inner { padding: 14px 20px; }
+    .nav-phone { font-size: 13px; }
+  }
+
+  /* ── BUTTONS ── */
+  .btn-primary {
+    display: inline-block;
+    background: var(--orange);
+    color: var(--black);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 18px 40px;
+    clip-path: polygon(12px 0%, 100% 0%, calc(100% - 12px) 100%, 0% 100%);
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+    width: 100%;
+    text-align: center;
+  }
+  .btn-primary:hover {
+    background: var(--yellow);
+    transform: translateY(-2px);
+  }
+
+  /* ── EYEBROW LABEL ── */
+  .eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  .eyebrow::before {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 2px;
+    background: var(--orange);
+    flex-shrink: 0;
+  }
+  .eyebrow span {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: var(--orange);
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: var(--black);
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding-top: 72px;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 40px,
+      rgba(255,107,0,0.02) 40px,
+      rgba(255,107,0,0.02) 41px
+    );
+    z-index: 0;
+  }
+
+  /* Orange radial glow */
+  .hero::after {
+    content: '';
+    position: absolute;
+    top: -200px;
+    right: -200px;
+    width: 700px;
+    height: 700px;
+    background: radial-gradient(circle, rgba(255,107,0,0.12) 0%, transparent 65%);
+    z-index: 0;
+  }
+
+  /* Diagonal slash accent */
+  .hero-slash {
+    position: absolute;
+    top: -100px;
+    right: -80px;
+    width: 400px;
+    height: 900px;
+    background: var(--orange);
+    opacity: 0.05;
+    transform: rotate(-20deg);
+    z-index: 0;
+  }
+
+  .hero-inner {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    gap: 60px;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 40px;
+  }
+
+  .hero-left {}
+
+  .hero-headline {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: clamp(56px, 7vw, 100px);
+    text-transform: uppercase;
+    line-height: 0.92;
+    margin-bottom: 28px;
+    color: var(--white);
+  }
+  .hero-headline .orange { color: var(--orange); }
+
+  .hero-sub {
+    font-size: 18px;
+    color: #BBBBBB;
+    max-width: 520px;
+    line-height: 1.6;
+    margin-bottom: 36px;
+  }
+
+  .hero-proof {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+
+  .proof-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: var(--grey);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .proof-item::before {
+    content: '';
+    display: block;
+    width: 8px;
+    height: 8px;
+    background: var(--orange);
+    flex-shrink: 0;
+    transform: rotate(45deg);
+  }
+
+  /* ── FORM CARD ── */
+  .form-card {
+    background: var(--dark);
+    border: 1px solid var(--mid);
+    border-top: 3px solid var(--orange);
+    padding: 36px 32px;
+    position: relative;
+  }
+
+  .form-card-headline {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 28px;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 6px;
+    line-height: 1;
+  }
+
+  .form-card-sub {
+    font-size: 14px;
+    color: var(--grey);
+    margin-bottom: 24px;
+  }
+
+  .form-group {
+    margin-bottom: 16px;
+  }
+
+  .form-group label {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--grey);
+    margin-bottom: 6px;
+  }
+
+  .form-group input,
+  .form-group select {
+    width: 100%;
+    background: #111111;
+    border: 1px solid var(--mid);
+    border-bottom: 2px solid var(--mid);
+    color: var(--white);
+    font-family: 'Barlow', sans-serif;
+    font-size: 15px;
+    padding: 13px 16px;
+    outline: none;
+    transition: border-color 0.2s;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  .form-group input:focus,
+  .form-group select:focus {
+    border-color: var(--orange);
+    border-bottom-color: var(--orange);
+  }
+  .form-group select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23888' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    cursor: pointer;
+  }
+  .form-group select option { background: #111; }
+
+  .form-guarantee {
+    margin-top: 14px;
+    font-size: 12px;
+    color: var(--grey);
+    text-align: center;
+    line-height: 1.5;
+  }
+  .form-guarantee strong { color: var(--white); }
+
+  /* Success state */
+  .form-success {
+    display: none;
+    text-align: center;
+    padding: 20px 0;
+  }
+  .form-success .tick {
+    font-size: 56px;
+    margin-bottom: 16px;
+  }
+  .form-success h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 32px;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 10px;
+  }
+  .form-success p {
+    color: #BBBBBB;
+    font-size: 15px;
+  }
+
+  @media (max-width: 900px) {
+    .hero-inner {
+      grid-template-columns: 1fr;
+      padding: 60px 20px;
+      gap: 40px;
+    }
+    .hero-headline { font-size: clamp(52px, 10vw, 72px); }
+  }
+
+  /* ── TICKER ── */
+  .ticker {
+    background: var(--orange);
+    overflow: hidden;
+    padding: 14px 0;
+    white-space: nowrap;
+  }
+  .ticker-track {
+    display: inline-flex;
+    animation: ticker 22s linear infinite;
+  }
+  .ticker-item {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--black);
+    padding: 0 48px;
+  }
+  .ticker-item::before {
+    content: '◆ ';
+    margin-right: 8px;
+  }
+  @keyframes ticker {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* ── SOCIAL PROOF STRIP ── */
+  .proof-strip {
+    background: #111111;
+    border-top: 1px solid var(--mid);
+    border-bottom: 1px solid var(--mid);
+    padding: 48px 40px;
+    position: relative;
+  }
+
+  .proof-strip-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+
+  .proof-stat {
+    background: var(--dark);
+    border-top: 2px solid var(--orange);
+    padding: 28px 24px;
+    text-align: center;
+  }
+
+  .proof-stat-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 56px;
+    color: var(--orange);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .proof-stat-label {
+    font-size: 13px;
+    color: var(--grey);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
+  }
+
+  @media (max-width: 600px) {
+    .proof-strip-inner { grid-template-columns: 1fr; gap: 2px; }
+    .proof-strip { padding: 32px 20px; }
+  }
+
+  /* ── WHAT YOU GET ── */
+  .what-you-get {
+    background: var(--black);
+    padding: 96px 40px;
+    position: relative;
+  }
+
+  .what-you-get::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 40px,
+      rgba(255,107,0,0.015) 40px,
+      rgba(255,107,0,0.015) 41px
+    );
+    z-index: 0;
+  }
+
+  .section-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-heading {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: clamp(40px, 5vw, 64px);
+    text-transform: uppercase;
+    color: var(--white);
+    line-height: 0.95;
+    margin-bottom: 48px;
+  }
+  .section-heading .orange { color: var(--orange); }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+  }
+
+  .feature-card {
+    background: var(--dark);
+    border: 1px solid var(--mid);
+    border-top: 2px solid var(--orange);
+    padding: 28px 28px 28px 28px;
+    transition: transform 0.2s, border-color 0.2s;
+  }
+  .feature-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--orange);
+  }
+
+  .feature-icon {
+    font-size: 28px;
+    margin-bottom: 12px;
+  }
+
+  .feature-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 20px;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+  }
+
+  .feature-desc {
+    font-size: 14px;
+    color: #AAAAAA;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 768px) {
+    .features-grid { grid-template-columns: 1fr; }
+    .what-you-get { padding: 60px 20px; }
+  }
+
+  /* ── TESTIMONIAL ── */
+  .testimonial-section {
+    background: #111111;
+    padding: 80px 40px;
+    position: relative;
+  }
+
+  .testimonial-card {
+    background: #161616;
+    border-left: 4px solid var(--orange);
+    padding: 28px 28px 28px 32px;
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  .testimonial-text {
+    font-size: 18px;
+    color: var(--white);
+    line-height: 1.6;
+    font-style: italic;
+    margin-bottom: 20px;
+  }
+
+  .testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .author-avatar {
+    width: 44px;
+    height: 44px;
+    background: var(--orange);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 20px;
+    color: var(--black);
+    flex-shrink: 0;
+  }
+
+  .author-name {
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--white);
+  }
+
+  .author-trade {
+    font-size: 13px;
+    color: var(--grey);
+  }
+
+  @media (max-width: 768px) {
+    .testimonial-section { padding: 56px 20px; }
+  }
+
+  /* ── HOW IT WORKS ── */
+  .how-it-works {
+    background: var(--black);
+    padding: 96px 40px;
+    position: relative;
+  }
+
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-top: 48px;
+  }
+
+  .step-card {
+    background: var(--dark);
+    border: 1px solid var(--mid);
+    border-top: 2px solid var(--orange);
+    padding: 32px 28px;
+  }
+
+  .step-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 72px;
+    color: rgba(255,107,0,0.15);
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+
+  .step-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 22px;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 10px;
+  }
+
+  .step-desc {
+    font-size: 14px;
+    color: #AAAAAA;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 768px) {
+    .steps-grid { grid-template-columns: 1fr; }
+    .how-it-works { padding: 60px 20px; }
+  }
+
+  /* ── PRICING STRIP ── */
+  .pricing-strip {
+    background: var(--orange);
+    padding: 56px 40px;
+  }
+
+  .pricing-strip-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+
+  .pricing-left {}
+
+  .pricing-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: rgba(0,0,0,0.5);
+    margin-bottom: 8px;
+  }
+
+  .pricing-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 80px;
+    color: var(--black);
+    line-height: 0.9;
+  }
+
+  .pricing-sub {
+    font-size: 16px;
+    font-weight: 600;
+    color: rgba(0,0,0,0.6);
+    margin-top: 8px;
+  }
+
+  .pricing-includes {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .pricing-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--black);
+  }
+  .pricing-item::before {
+    content: '';
+    display: block;
+    width: 6px;
+    height: 6px;
+    background: var(--black);
+    transform: rotate(45deg);
+    flex-shrink: 0;
+  }
+
+  .pricing-cta-wrap { flex-shrink: 0; }
+
+  .btn-primary-dark {
+    display: inline-block;
+    background: var(--black);
+    color: var(--orange);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 20px 48px;
+    clip-path: polygon(12px 0%, 100% 0%, calc(100% - 12px) 100%, 0% 100%);
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+    white-space: nowrap;
+  }
+  .btn-primary-dark:hover {
+    background: #1A1A1A;
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 768px) {
+    .pricing-strip { padding: 48px 20px; }
+    .pricing-num { font-size: 64px; }
+    .pricing-strip-inner { flex-direction: column; align-items: flex-start; }
+  }
+
+  /* ── BOTTOM FORM ── */
+  .bottom-form {
+    background: #111111;
+    padding: 96px 40px;
+    position: relative;
+  }
+
+  .bottom-form::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 40px,
+      rgba(255,107,0,0.015) 40px,
+      rgba(255,107,0,0.015) 41px
+    );
+    z-index: 0;
+  }
+
+  .bottom-form-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 680px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .bottom-form-headline {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: clamp(40px, 6vw, 72px);
+    text-transform: uppercase;
+    line-height: 0.92;
+    margin-bottom: 16px;
+    color: var(--white);
+  }
+  .bottom-form-headline .orange { color: var(--orange); }
+
+  .bottom-form-sub {
+    font-size: 16px;
+    color: #AAAAAA;
+    margin-bottom: 40px;
+  }
+
+  .bottom-form-card {
+    background: var(--dark);
+    border: 1px solid var(--mid);
+    border-top: 3px solid var(--orange);
+    padding: 36px 32px;
+    text-align: left;
+  }
+
+  @media (max-width: 768px) {
+    .bottom-form { padding: 60px 20px; }
+    .bottom-form-card { padding: 28px 20px; }
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--black);
+    border-top: 1px solid var(--mid);
+    padding: 28px 40px;
+  }
+
+  .footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .footer-brand {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 20px;
+  }
+
+  .footer-copy {
+    font-size: 13px;
+    color: var(--grey);
+  }
+
+  @media (max-width: 600px) {
+    footer { padding: 24px 20px; }
+    .footer-inner { flex-direction: column; text-align: center; }
+  }
+
+  /* ── MOBILE STICKY CTA ── */
+  .mobile-sticky {
+    display: none;
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    z-index: 99;
+    background: var(--black);
+    border-top: 2px solid var(--orange);
+    padding: 12px 20px;
+  }
+
+  @media (max-width: 768px) {
+    .mobile-sticky { display: block; }
+    body { padding-bottom: 72px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="logo">
+      <span class="t">Tradie</span><span class="w">Web</span><span class="h">Help</span>
+    </a>
+    <a href="tel:+61200000000" class="nav-phone">📞 Call Us Now</a>
+  </div>
+</nav>
+
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-slash"></div>
+  <div class="hero-inner container" style="max-width:1200px;margin:0 auto;padding:80px 40px;">
+
+    <!-- LEFT: Copy -->
+    <div class="hero-left">
+      <div class="eyebrow"><span>Sydney Tradies</span></div>
+
+      <h1 class="hero-headline">
+        YOUR<br>
+        COMPETITOR<br>
+        IS <span class="orange">ONLINE.</span><br>
+        YOU'RE NOT.
+      </h1>
+
+      <p class="hero-sub">
+        Every week you're invisible on Google, you're handing jobs to the tradie down the road.
+        We fix that. Professional website live in 7 days. From $799. No lock-in.
+      </p>
+
+      <div class="hero-proof">
+        <div class="proof-item">Live in 7 days</div>
+        <div class="proof-item">From $799</div>
+        <div class="proof-item">No lock-in</div>
+        <div class="proof-item">Local SEO included</div>
+      </div>
+    </div>
+
+    <!-- RIGHT: Form -->
+    <div class="form-card" id="hero-form">
+      <div class="eyebrow"><span>Get Started</span></div>
+      <div class="form-card-headline">Get a Free Quote</div>
+      <p class="form-card-sub">Takes 60 seconds. We'll call you back today.</p>
+
+      <form id="quoteForm" action="https://formspree.io/f/xkovkvzo" method="POST">
+        <div class="form-group">
+          <label>Your Name</label>
+          <input type="text" name="name" placeholder="Dave Smith" required>
+        </div>
+        <div class="form-group">
+          <label>Phone Number</label>
+          <input type="tel" name="phone" placeholder="04XX XXX XXX" required>
+        </div>
+        <div class="form-group">
+          <label>Your Trade</label>
+          <select name="trade" required>
+            <option value="" disabled selected>Select your trade</option>
+            <option>Plumber</option>
+            <option>Electrician</option>
+            <option>Builder / Carpenter</option>
+            <option>Landscaper</option>
+            <option>Concreter</option>
+            <option>Painter</option>
+            <option>HVAC / Air Con</option>
+            <option>Tiler</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Do you have a website?</label>
+          <select name="existing_site" required>
+            <option value="" disabled selected>Select one</option>
+            <option>No website at all</option>
+            <option>Facebook page only</option>
+            <option>Old website that doesn't work</option>
+            <option>Website but not getting leads</option>
+          </select>
+        </div>
+        <button type="submit" class="btn-primary">GET MY FREE QUOTE →</button>
+        <p class="form-guarantee">🔒 <strong>No lock-in.</strong> No obligation. We'll call you — not spam you.</p>
+      </form>
+
+      <div class="form-success" id="formSuccess">
+        <div class="tick">✅</div>
+        <h3>You're in.</h3>
+        <p>We'll call you back within a few hours.<br>Check your phone — it'll be a Sydney number.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track">
+    <span class="ticker-item">Live in 7 days</span>
+    <span class="ticker-item">From $799</span>
+    <span class="ticker-item">No lock-in contracts</span>
+    <span class="ticker-item">Local SEO included</span>
+    <span class="ticker-item">Mobile-first builds</span>
+    <span class="ticker-item">Google Business Profile setup</span>
+    <span class="ticker-item">Sutherland Shire specialists</span>
+    <span class="ticker-item">Real enquiries. Real results.</span>
+    <span class="ticker-item">Live in 7 days</span>
+    <span class="ticker-item">From $799</span>
+    <span class="ticker-item">No lock-in contracts</span>
+    <span class="ticker-item">Local SEO included</span>
+    <span class="ticker-item">Mobile-first builds</span>
+    <span class="ticker-item">Google Business Profile setup</span>
+    <span class="ticker-item">Sutherland Shire specialists</span>
+    <span class="ticker-item">Real enquiries. Real results.</span>
+  </div>
+</div>
+
+
+<!-- PROOF STATS -->
+<section class="proof-strip">
+  <div class="proof-strip-inner">
+    <div class="proof-stat">
+      <div class="proof-stat-num">7</div>
+      <div class="proof-stat-label">Days from call to live</div>
+    </div>
+    <div class="proof-stat">
+      <div class="proof-stat-num">$799</div>
+      <div class="proof-stat-label">All in. No hidden fees.</div>
+    </div>
+    <div class="proof-stat">
+      <div class="proof-stat-num">2.1M</div>
+      <div class="proof-stat-label">Sydney households hire tradies yearly</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- WHAT YOU GET -->
+<section class="what-you-get">
+  <div class="section-inner">
+    <div class="eyebrow"><span>What's Included</span></div>
+    <h2 class="section-heading">
+      EVERYTHING YOU NEED.<br>
+      <span class="orange">NOTHING YOU DON'T.</span>
+    </h2>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">📱</div>
+        <div class="feature-title">Mobile-First Design</div>
+        <div class="feature-desc">80% of customers search on their phone. Your site looks sharp and loads fast on every device. One tap to call you.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📍</div>
+        <div class="feature-title">Local SEO Built In</div>
+        <div class="feature-desc">Your suburb is in the headline, your services are keyword-optimised, and Google Business Profile is connected from day one.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">⚡</div>
+        <div class="feature-title">Fast Load Times</div>
+        <div class="feature-desc">Slow sites lose leads. We build lean, fast sites that score well on Google PageSpeed — so you rank and convert.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🏆</div>
+        <div class="feature-title">Google Reviews Displayed</div>
+        <div class="feature-desc">Your reviews show up on your site automatically. Social proof before they even pick up the phone.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📄</div>
+        <div class="feature-title">Service Pages That Rank</div>
+        <div class="feature-desc">Not just a homepage. Dedicated pages for each service you offer — written to rank for local searches.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔓</div>
+        <div class="feature-title">No Lock-In. Ever.</div>
+        <div class="feature-desc">$25/month to host. Cancel anytime. We hand you the full code if you leave. Your site. Your property.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- TESTIMONIAL -->
+<section class="testimonial-section">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div class="eyebrow" style="justify-content:center;margin-bottom:32px;"><span>Real Results</span></div>
+    <div class="testimonial-card">
+      <div class="testimonial-text">
+        "Got my site built in under a week and had my first Google enquiry the day after it went live.
+        Best money I've spent on the business. No lock-in, no BS — just a site that actually works."
+      </div>
+      <div class="testimonial-author">
+        <div class="author-avatar">JP</div>
+        <div>
+          <div class="author-name">Jai — Primal Plumbing Solutions</div>
+          <div class="author-trade">Plumber · Sutherland Shire</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- HOW IT WORKS -->
+<section class="how-it-works">
+  <div class="section-inner">
+    <div class="eyebrow"><span>The Process</span></div>
+    <h2 class="section-heading">
+      LIVE IN <span class="orange">7 DAYS.</span><br>HERE'S HOW.
+    </h2>
+
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-num">01</div>
+        <div class="step-title">Quick onboarding call</div>
+        <div class="step-desc">20 minutes. We get your trade, your suburbs, your services. That's it. You get back on the tools.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">02</div>
+        <div class="step-title">We build it</div>
+        <div class="step-desc">We write the copy, build the pages, set up local SEO, connect Google Business Profile. You do nothing.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">03</div>
+        <div class="step-title">Review & go live</div>
+        <div class="step-desc">We walk you through it on a call. Happy? We hit publish. Live in 7 days, enquiries start flowing.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- PRICING STRIP -->
+<section class="pricing-strip">
+  <div class="pricing-strip-inner">
+    <div class="pricing-left">
+      <div class="pricing-label">All-in price</div>
+      <div class="pricing-num">$799</div>
+      <div class="pricing-sub">Then $25/month to keep it live. Cancel anytime.</div>
+    </div>
+    <div class="pricing-includes">
+      <div class="pricing-item">Professional website built for leads</div>
+      <div class="pricing-item">Local SEO from day one</div>
+      <div class="pricing-item">Mobile-first design</div>
+      <div class="pricing-item">Google Business Profile optimised</div>
+      <div class="pricing-item">No lock-in contracts</div>
+    </div>
+    <div class="pricing-cta-wrap">
+      <a href="#bottom-form" class="btn-primary-dark">GET STARTED →</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- BOTTOM FORM -->
+<section class="bottom-form" id="bottom-form">
+  <div class="bottom-form-inner">
+    <div class="eyebrow" style="justify-content:center;"><span>Get Started Today</span></div>
+    <h2 class="bottom-form-headline">
+      STOP LOSING<br>
+      JOBS TO <span class="orange">GOOGLE.</span>
+    </h2>
+    <p class="bottom-form-sub">Fill this in. We'll call you back today. Live in 7 days.</p>
+
+    <div class="bottom-form-card">
+      <form id="bottomForm" action="https://formspree.io/f/xkovkvzo" method="POST">
+        <div class="form-group">
+          <label>Your Name</label>
+          <input type="text" name="name" placeholder="Dave Smith" required>
+        </div>
+        <div class="form-group">
+          <label>Phone Number</label>
+          <input type="tel" name="phone" placeholder="04XX XXX XXX" required>
+        </div>
+        <div class="form-group">
+          <label>Your Trade</label>
+          <select name="trade" required>
+            <option value="" disabled selected>Select your trade</option>
+            <option>Plumber</option>
+            <option>Electrician</option>
+            <option>Builder / Carpenter</option>
+            <option>Landscaper</option>
+            <option>Concreter</option>
+            <option>Painter</option>
+            <option>HVAC / Air Con</option>
+            <option>Tiler</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Do you have a website?</label>
+          <select name="existing_site" required>
+            <option value="" disabled selected>Select one</option>
+            <option>No website at all</option>
+            <option>Facebook page only</option>
+            <option>Old website that doesn't work</option>
+            <option>Website but not getting leads</option>
+          </select>
+        </div>
+        <button type="submit" class="btn-primary">GET MY FREE QUOTE →</button>
+        <p class="form-guarantee">🔒 <strong>No lock-in.</strong> No obligation. We'll call you — not spam you.</p>
+      </form>
+
+      <div class="form-success" id="bottomSuccess">
+        <div class="tick">✅</div>
+        <h3>You're in.</h3>
+        <p>We'll call you back within a few hours.<br>Check your phone — it'll be a Sydney number.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="t" style="color:var(--orange)">Tradie</span><span style="color:var(--yellow)">Web</span><span style="color:var(--orange)">Help</span>
+    </div>
+    <div class="footer-copy">© 2025 Demcorp Capital Pty Ltd · tradiewebhelp.com · Sutherland Shire, Sydney NSW</div>
+  </div>
+</footer>
+
+
+<!-- MOBILE STICKY CTA -->
+<div class="mobile-sticky">
+  <a href="#hero-form" class="btn-primary" style="font-size:16px;padding:14px 24px;">
+    GET MY FREE QUOTE →
+  </a>
+</div>
+
+
+<script>
+  // Handle hero form
+  document.getElementById('quoteForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const form = this;
+    const data = new FormData(form);
+    try {
+      const res = await fetch(form.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } });
+      if (res.ok) {
+        form.style.display = 'none';
+        document.getElementById('formSuccess').style.display = 'block';
+      }
+    } catch(err) { form.submit(); }
+  });
+
+  // Handle bottom form
+  document.getElementById('bottomForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const form = this;
+    const data = new FormData(form);
+    try {
+      const res = await fetch(form.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } });
+      if (res.ok) {
+        form.style.display = 'none';
+        document.getElementById('bottomSuccess').style.display = 'block';
+      }
+    } catch(err) { form.submit(); }
+  });
+
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', function(e) {
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
